@@ -11,7 +11,7 @@ with open("iris_test.txt","r") as fichier:
 
 listIris = iris_res.split("\n")
 W=np.array([1, 2, 3, 4, 5])
-#W={2,3,4,8,1,2,6}
+
 perf=0
 N=len(listIris)
 
@@ -25,4 +25,4 @@ for i in range (0,N-1) :
         perf=perf+1
 
 #on affiche le pourcentage de bonne classification       
-print perf/N
+print float(perf)/float(N)
