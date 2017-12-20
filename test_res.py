@@ -8,10 +8,23 @@ Created on Wed Dec 13 12:00:07 2017
 import random
 
 
-with open("iris_apprentissage","r") as fichier:
+with open("iris_test","r") as fichier:
     iris_res=fichier.read()
 
 listIris = iris_res.split("\n")
-perf=0
+iris_res.close()
 
-for i in range (0,)
+perf=0
+N=length(listIris)
+
+for i in range (0,N-1) :
+    # on calcule le produit sclaire 
+    produitScalaire=W[0]
+    x=listIris[i].split(" ")
+    for j in range(1,length(W)-1):
+        somme=somme+x[j]*W[j]
+    if((x[0]*somme)>0)
+        perf=perf+1
+
+#on affiche le pourcentage de bonne classification       
+print perf/N
