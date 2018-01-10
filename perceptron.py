@@ -7,6 +7,9 @@ Created on Wed Dec 20 08:33:07 2017
 import random
 import numpy as np
 
+
+
+
 # Dans un premier temps on récupère les éléments du fichier iris apprentissage
 with open("iris_apprentissage.txt","r") as fichier:
     iris_apprentissage_res=fichier.read()
