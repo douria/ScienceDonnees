@@ -10,7 +10,7 @@ Created on Wed Dec 13 10:47:15 2017
 def RBCancer():
     with open("BCancer.data","r") as fichier:
         fich_donnees = fichier.read()
-    fichRes = open("Cancer_resultat1.txt", 'w')    
+    fichRes = open("bCancer_resultat1.txt", 'w')    
 
     listdonnees = fich_donnees.split("\n")
 
