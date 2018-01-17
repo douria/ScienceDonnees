@@ -8,27 +8,35 @@ import random
 
 
 
-def random_sep(name):
+def random_sep(name,nameResApprentissage,nameResTest):
     with open(name,"r") as fichier:
         res=fichier.read()    
 
 
     list = res.split("\n")
-    random.shuffle(listIris)
-    pourcentage=int(0.66*len(listIris))
+    random.shuffle(list)
+    pourcentage=int(0.66*len(list))
     print pourcentage 
     
-    iris_apprentissage = open("iris_apprentissage.txt", 'w')
+    iris_apprentissage = open(nameResApprentissage+".txt", 'w')
     for i in range(pourcentage-2):
-        iris_apprentissage.write(listIris[i]+"\n")
-    iris_apprentissage.write(listIris[pourcentage-1])
+        iris_apprentissage.write(list[i]+"\n")
+    iris_apprentissage.write(list[pourcentage-1])
     iris_apprentissage.close()
     
-    iris_test = open("iris_test.txt", 'w')
-    for i in range (pourcentage, (len(listIris)-2)):
-        iris_test.write(listIris[i]+"\n")
-    iris_test.write(listIris[len(listIris)-1])  
+    iris_test = open(nameResTest+".txt", 'w')
+    for i in range (pourcentage, (len(list)-2)):
+        iris_test.write(list[i]+"\n")
+    iris_test.write(list[len(list)-1])  
     iris_test.close()
 
 
+random_sep("iris_resultat1.txt","iris_apprentissage", "iris_test")
+random_sep("mushroom_resultat1.txt","mushroom_apprentissage", "mushroom_test")
+random_sep("spambase_resultat1.txt","spambase_apprentissage", "spambase_test")
+random_sep("bCancer_resultat1.txt","bCancer_apprentissage", "bCancer_test")
+random_sep("iris_resultatN.txt","iris_apprentissageN", "iris_testN")
+random_sep("mushroom_resultatN.txt","mushroom_apprentissageN", "mushroom_testN")
+random_sep("spambase_resultatN.txt","spambase_apprentissageN", "spambase_testN")
+random_sep("bCancer_resultatN.txt","bCancer_apprentissageN", "bCancer_testN")
     

@@ -5,7 +5,6 @@ Created on Wed Dec 20 08:33:07 2017
 @author: alice
 """
 import random
-import numpy as np
 
 def recuplistfich(name):
     # Dans un premier temps on récupère les éléments du fichier iris apprentissage
