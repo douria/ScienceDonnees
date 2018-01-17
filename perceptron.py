@@ -80,7 +80,7 @@ def perfPerceptron(resultat_perceptron,mylistTest, N):
 
 # Partie Apprentissage
 #  récupérer les éléments
-iris_list = recuplistfich("iris_apprentissage.txt")
+iris_list = recuplistfich("bCancer_apprentissage.txt")
 #bCancer_list = recuplistfich("bCancer_apprentissage.txt")
 #mushroom_list = recuplistfich("mushroom_apprentissage.txt")
 #spambase_list = recuplistfich("spambase_apprentissage.txt")
@@ -103,7 +103,7 @@ print(resultat_perceptron_Iris)
 #print(resultat_perceptron_Spambase)
 
 # Partie test
-iris_listTest = recuplistfich("iris_test.txt")
+iris_listTest = recuplistfich("bCancer_test.txt")
 #bCancer_listTest = recuplistfich("bCancer_test.txt")
 #mushroom_listTest = recuplistfich("mushroom_test.txt")
 #spambase_listTest = recuplistfich("spambase_test.txt")

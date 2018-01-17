@@ -153,7 +153,7 @@ def irisN():
 
     listdonnees = fich_donnees.split("\n")    
     
-    listN = normaliser(listdonnees,0)
+    listN = normaliser(listdonnees,-1)
     fichRes = open("iris_resultatN.txt", 'w')    
 
     classe="Iris-setosa"
@@ -163,7 +163,7 @@ def irisN():
             fichRes.write("+1") 
         else :
             fichRes.write("-1") 
-        fichRes.write(str(listN[i][0])+" "+str(listN[i][1])+" "+str(listN[i][2])+" "+str(listN[i][3])) 
+        fichRes.write(" "+str(listN[i][0])+" "+str(listN[i][1])+" "+str(listN[i][2])+" "+str(listN[i][3])) 
         if(i!=len(listdonnees)-1):
             fichRes.write("\n")
     fichRes.close() 
@@ -184,7 +184,7 @@ def iris():
             fichRes.write("+1") 
         else :
             fichRes.write("-1") 
-        fichRes.write(str(listN[0])+" "+str(listN[1])+" "+str(listN[2])+" "+str(listN[3])) 
+        fichRes.write(" "+str(listN[0])+" "+str(listN[1])+" "+str(listN[2])+" "+str(listN[3])) 
         if(i!=len(listdonnees)-1):
             fichRes.write("\n")
     fichRes.close() 
