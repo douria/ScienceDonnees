@@ -26,3 +26,6 @@ for i in range (pourcentage, (len(listIris)-2)):
     iris_test.write(listIris[i]+"\n")
 iris_test.write(listIris[len(listIris)-1])  
 iris_test.close()
+
+
+    
