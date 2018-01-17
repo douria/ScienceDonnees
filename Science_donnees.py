@@ -47,7 +47,7 @@ def RBCancer():
         for j in range (len(listeDBC)-1):
            if(j>1):
                 fichRes.write(" "+str(listeDBC[j]))
-        if(i!=len(listeDBC)-1):
+        if(i!=len(listdonnees)-1):
              fichRes.write("\n")
         listeDBC=listdonnees[0].split(",")
 
@@ -96,7 +96,7 @@ def spambase():
            if(j>1):
                fichRes.write(" "+str(listeM[j]))  
 
-        if(i!=len(listeM)-1):
+        if(i!=len(listdonnees)-1):
              fichRes.write("\n")
         listeM=listdonnees[i].split(",")
 
