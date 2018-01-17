@@ -7,38 +7,47 @@ Created on Wed Jan 10 09:20:03 2018
 
 import random
 import numpy as np
+import Science_donnees as sdd
 
-# Dans un premier temps on récupère les éléments du fichier iris apprentissage
-with open("iris_apprentissage.txt","r") as fichier:
-    iris_apprentissage_res=fichier.read()
+## Dans un premier temps on récupère les éléments du fichier iris apprentissage
+#with open("iris_apprentissage.txt","r") as fichier:
+#    iris_apprentissage_res=fichier.read()
+#
+#listIris = iris_apprentissage_res.split("\n")
+#
+## On sépare pour chacun des éléments les différentes valeurs de leurs caractéristiques
+#mylist = [(listIris[i].split(" ")) for i in range(0,len(listIris)-1)]
+#
+## Enfin on cast les éléments de la liste pour en faire des nombres float au lieu de string
+#for i in range(len(mylist)):
+#    for j in range(len(mylist[i])):
+#        try:
+#            mylist[i][j] = float(mylist[i][j])
+#        except ValueError,e:
+#            print "error",e,"on line",i, j
+#
+#mylist_norm = mylist
+##fonction pour normaliser
+#def maxi(tab, ind):
+#    m = tab[0][ind]
+#    for i in range(1,len(tab)):
+#        if tab[i][ind]>m:
+#            m=tab[i][ind]
+#    return m
+#    
+##on normalise les valeurs
+#for i in range(1, len(mylist[0])):
+#    maxim = maxi(mylist, i)
+#    for j in range(0, len(mylist)):
+#        mylist_norm[j][i] = mylist[j][i]/maxim
 
-listIris = iris_apprentissage_res.split("\n")
 
-# On sépare pour chacun des éléments les différentes valeurs de leurs caractéristiques
-mylist = [(listIris[i].split(" ")) for i in range(0,len(listIris)-1)]
+#  récupérer les éléments
+listNormRBCancer = sdd.RBCancer
+listNormIris = sdd.iris
+listNormMushroom = sdd.mushroom
+listNormSpambase = sdd.spambase
 
-# Enfin on cast les éléments de la liste pour en faire des nombres float au lieu de string
-for i in range(len(mylist)):
-    for j in range(len(mylist[i])):
-        try:
-            mylist[i][j] = float(mylist[i][j])
-        except ValueError,e:
-            print "error",e,"on line",i, j
-
-mylist_norm = mylist
-#fonction pour normaliser
-def maxi(tab, ind):
-    m = tab[0][ind]
-    for i in range(1,len(tab)):
-        if tab[i][ind]>m:
-            m=tab[i][ind]
-    return m
-    
-#on normalise les valeurs
-for i in range(1, len(mylist[0])):
-    maxim = maxi(mylist, i)
-    for j in range(0, len(mylist)):
-        mylist_norm[j][i] = mylist[j][i]/maxim
 
 # Autres initialisations
 #le pas d'appentissage

@@ -5,13 +5,14 @@ Created on Wed Dec 13 10:47:15 2017
 @author: douria
 """
 
-with open("spambase.data","r") as fichier:
-    fich_donnees=fichier.read()
 
-fich_res=""
-listdonnees = fich_donnees.split("\n")
 
-def RBCancer(listdonnees):
+def RBCancer():
+    with open("BCancer.data","r") as fichier:
+        fich_donnees = fichier.read()
+    fich_res=""
+    listdonnees = fich_donnees.split("\n")
+    
     fich_resultat=""
     classe="M"
     listeDBC=normaliser(listdonnees,1)
@@ -28,7 +29,12 @@ def RBCancer(listdonnees):
             fich_resultat+="\n"
     return fich_resultat
 
-def spambase(listdonnees):
+def spambase():
+    with open("spambase.data","r") as fichier:
+        fich_donnees=fichier.read()
+    fich_res=""
+    listdonnees = fich_donnees.split("\n")
+    
     fich_resultat=""
     classe="1"
     listeM=normaliser(listdonnees,0)
@@ -44,7 +50,12 @@ def spambase(listdonnees):
             fich_resultat+="\n"
     return fich_resultat
     
-def mushroom(listdonnees):
+def mushroom():
+    with open("mushroom.data","r") as fichier:
+         fich_donnees=fichier.read()
+    fich_res=""
+    listdonnees = fich_donnees.split("\n")
+    
     fich_resultat=""
     listeM=normaliserAlph(listdonnees)
     for i in range(len(listeM)-1):
@@ -61,6 +72,12 @@ def mushroom(listdonnees):
     
     
 def iris():
+    with open("iris.data","r") as fichier:
+         fich_donnees=fichier.read()
+    fich_res=""
+    listdonnees = fich_donnees.split("\n")    
+    
+    listN = normaliser(listdonnees)
     fich_resultat=""
     classe="Iris-setosa"
     for i in range(len(listdonnees)-1):
@@ -69,7 +86,7 @@ def iris():
             fich_resultat+="+1 "
         else :
             fich_resultat+="-1 "
-        fich_resultat+=listl[0]+" "+listl[1]+" "+listl[2]+" "+listl[3]
+        fich_resultat+=listN[i][0]+" "+listN[i][1]+" "+listN[i][2]+" "+listN[i][3]
         if(i!=len(listdonnees)-1):
             fich_resultat+="\n"
     return fich_resultat
@@ -116,6 +133,8 @@ def normaliser (tabLecture,startindex):
               listl[j]=float(listl[j])/float(listMax[j])
        listTab.append(listl)
    return listTab
+   
+
 #on affiche le resultat 
-fich_res=spambase(listdonnees)
-print fich_res
+#fich_res=spambase(listdonnees)
+#print fich_res
