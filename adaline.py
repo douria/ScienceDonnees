@@ -29,10 +29,14 @@ def recuplistfich(name):
     return mylist
 
 #  récupérer les éléments
-iris_list = recuplistfich("iris_apprentissage.txt")
-#bCancer_list = recuplistfich("bCancer_apprentissageN.txt")
-#mushroom_list = recuplistfich("mushroom_apprentissageN.txt")
-#spambase_list = recuplistfich("spambase_apprentissageN.txt")
+print("IRIS\n")
+iris_list = recuplistfich("iris_apprentissageN.txt")
+print("\n BCANCER")
+bCancer_list = recuplistfich("bCancer_apprentissageN.txt")
+print("\n MUSHROOM")
+mushroom_list = recuplistfich("mushroom_apprentissageN.txt")
+print("\n SPAMBASE")
+spambase_list = recuplistfich("spambase_apprentissageN.txt")
 
 def norm(mylist):
     mylist_norm = mylist
@@ -52,7 +56,7 @@ def norm(mylist):
     
     return mylist_norm
 
-iris_list = norm(iris_list)
+#iris_list = norm(iris_list)
 
 # Autres initialisations
 #le pas d'appentissage
@@ -61,9 +65,9 @@ mu_tab = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
 E = 0.01
 #le nombre max d'itération
 Tiris = 20*len(iris_list)
-#TbCancer = 20*len(bCancer_list)
-#Tmushroom = 20*len(mushroom_list)
-#Tspambase = 20*len(spambase_list)
+TbCancer = 20*len(bCancer_list)
+Tmushroom = 20*len(mushroom_list)
+Tspambase = 20*len(spambase_list)
 
 
 
@@ -82,7 +86,9 @@ def L(w,S):
     return res/m
 
 def adaline(mu, T, E, liste):
-    w = [0,0,0,0,0]
+    w = []
+    for i in range(0, len(liste[0])):
+        w.append(0.0)
     t = 0
     while t<T or E<=L(w,liste):
         elt = random.choice(liste) #choix exemple aléatoire
@@ -104,26 +110,26 @@ def executeAdaline(listNorm, T, mu_tab, E):
 
 print("Iris Apprentissage:\n")
 resultat_adaline_Iris = executeAdaline(iris_list, Tiris, mu_tab, E)
-#print("BCancer Apprentissage:\n")
-#resultat_adaline_BCancer = executeAdaline(bCancer_list, TbCancer, mu_tab, E)
-#print("Mushroom Apprentissage:\n")
-#resultat_adaline_Mushroom = executeAdaline(mushroom_list, Tmushroom, mu_tab, E)
-#print("Spambase Apprentissage:\n")
-#resultat_adaline_Spambase = executeAdaline(spambase_list, Tspambase, mu_tab, E)
+print("BCancer Apprentissage:\n")
+resultat_adaline_BCancer = executeAdaline(bCancer_list, TbCancer, mu_tab, E)
+print("Mushroom Apprentissage:\n")
+resultat_adaline_Mushroom = executeAdaline(mushroom_list, Tmushroom, mu_tab, E)
+print("Spambase Apprentissage:\n")
+resultat_adaline_Spambase = executeAdaline(spambase_list, Tspambase, mu_tab, E)
 
 # Partie test
 
 iris_listTest = recuplistfich("iris_test.txt")
-#bCancer_listTest = recuplistfich("bCancer_testN.txt")
-#mushroom_listTest = recuplistfich("mushroom_testN.txt")
-#spambase_listTest = recuplistfich("spambase_testN.txt")
+bCancer_listTest = recuplistfich("bCancer_testN.txt")
+mushroom_listTest = recuplistfich("mushroom_testN.txt")
+spambase_listTest = recuplistfich("spambase_testN.txt")
 
 # Autres initialisations
 Niris = len(iris_listTest)
-#NbCancer = len(bCancer_listTest)
-#Nmushroom = len(mushroom_listTest)
-#Nspambase = len(spambase_listTest)
-perf_tab = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+NbCancer = len(bCancer_listTest)
+Nmushroom = len(mushroom_listTest)
+Nspambase = len(spambase_listTest)
+
 
 # Fonctions de calcul de la performance sur l'échantillon test
 def testerAdaline(w_res, liste, N):
@@ -135,7 +141,8 @@ def testerAdaline(w_res, liste, N):
     print(perf/float(N))
     return perf/float(N)
 
-def perfAdaline(w_res, mylistTest, N):    
+def perfAdaline(w_res, mylistTest, N):
+    perf_tab = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     for i in range(0,len(w_res)):
         print(w_res[i])
         r = testerAdaline(w_res[i], mylistTest, N)
@@ -144,15 +151,15 @@ def perfAdaline(w_res, mylistTest, N):
     return perf_tab
 
 perf_Iris = perfAdaline(resultat_adaline_Iris,iris_listTest,Niris)
-#perf_bCancer = perfAdaline(resultat_adaline_BCancer,bCancer_listTest,NbCancer)
-#perf_mushroom = perfAdaline(resultat_adaline_Mushroom,mushroom_listTest,Nmushroom)
-#perf_spambase = perfAdaline(resultat_adaline_Spambase,spambase_listTest,Nspambase)
+perf_bCancer = perfAdaline(resultat_adaline_BCancer,bCancer_listTest,NbCancer)
+perf_mushroom = perfAdaline(resultat_adaline_Mushroom,mushroom_listTest,Nmushroom)
+perf_spambase = perfAdaline(resultat_adaline_Spambase,spambase_listTest,Nspambase)
 
 print ("\n Performances Adaline Iris: \n")
 print (perf_Iris)
-#print ("\n Performances Adaline bCancer: \n")
-#print (perf_bCancer)
-#print ("\n Performances Adaline Mushroom: \n")
-#print (perf_mushroom)
-#print ("\n Performances Adaline Spambase: \n")
-#print (perf_spambase)
+print ("\n Performances Adaline bCancer: \n")
+print (perf_bCancer)
+print ("\n Performances Adaline Mushroom: \n")
+print (perf_mushroom)
+print ("\n Performances Adaline Spambase: \n")
+print (perf_spambase)
