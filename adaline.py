@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Dec 20 08:33:07 2017
+Created on Wed Jan 10 09:20:03 2018
 
 @author: alice
 """
+
 import random
 import numpy as np
 
@@ -24,36 +25,62 @@ for i in range(len(mylist)):
         except ValueError,e:
             print "error",e,"on line",i, j
 
+mylist_norm = mylist
+#fonction pour normaliser
+def maxi(tab, ind):
+    m = tab[0][ind]
+    for i in range(1,len(tab)):
+        if tab[i][ind]>m:
+            m=tab[i][ind]
+    return m
+    
+#on normalise les valeurs
+for i in range(1, len(mylist[0])):
+    maxim = maxi(mylist, i)
+    for j in range(0, len(mylist)):
+        mylist_norm[j][i] = mylist[j][i]/maxim
+
 # Autres initialisations
+#le pas d'appentissage
 mu_tab = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
-T = 7
+#précision
+E = 0.01
+#le nombre max d'itération
+T = 20*len(mylist)
 
-resultat_perceptron= []
+resultat_adaline= []
 
-# Définition des fonctions permettant de calculer le Perceptron
+# Définition des fonctions permettant de calculer Adaline
 def produitScalaire(w, x):
     res = w[0]
     for i in range(1,len(x)-1):
         res = res + w[i]*x[i]
     return res
+    
+def L(w,S):
+    m = len(S)
+    res = 0
+    for i in range(0, len(S)):
+        res = res + produitScalaire(w,S[i]) -S[i][0]
+    return res/m
 
-
-def perceptron(mu, T, liste):
-    w = [0,0,0,0]
-    for t in range(1, T):
-        elt = random.choice(liste)
+def adaline(mu, T, E, liste):
+    w = [0,0,0,0,0]
+    t = 0
+    while t<T or E<=L(w,liste):
+        elt = random.choice(liste) #choix exemple aléatoire
         #print(elt)
-        if (elt[0]*produitScalaire(w,elt) <= 0):
-            w[0] = w[0]+ mu*elt[0] 
-            for i in range(1, len(w)):
-                w[i] = w[i]+ mu*elt[0]*elt[i]
+        w[0] = w[0] - 2*mu*(produitScalaire(w,elt)-elt[0])
+        for i in range(1, len(w)):
+            w[i] = w[i] - 2*mu*elt[i]*(produitScalaire(w,elt)-elt[0])
+        t = t+1
     return w
 
-# On exécute le Perceptron pour les différentes valeurs de mu 
+# On exécute Adaline pour les différentes valeurs de mu 
 for m in range(0,len(mu_tab)):
-    resultat_perceptron.append(perceptron(mu_tab[m], T, mylist))
+    resultat_adaline.append(adaline(mu_tab[m], T, E, mylist_norm))
 
-print (resultat_perceptron)
+print (resultat_adaline)
 
 
 
@@ -81,7 +108,7 @@ N=len(mylistTest)
 perf_tab = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 # Fonction de calcul de la performance sur l'échantillon test
-def testerPerceptron(w_res, liste):
+def testerAdaline(w_res, liste):
     perf = 0.0
     for i in range(0, N):
         ps = produitScalaire(w_res, liste[i])
@@ -90,10 +117,10 @@ def testerPerceptron(w_res, liste):
     print(perf/float(N))
     return perf/float(N)
 
-for i in range(0,len(resultat_perceptron)):
-    print(resultat_perceptron[i])
-    r = testerPerceptron(resultat_perceptron[i], mylistTest)
-    print(r)
-    perf_tab[i] = r
+#for i in range(0,len(resultat_adaline)):
+#    print(resultat_adaline[i])
+#    r = testerAdaline(resultat_adaline[i], mylistTest)
+#    print(r)
+#    perf_tab[i] = r
 
-print (perf_tab)
+#print (perf_tab)
