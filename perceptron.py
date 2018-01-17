@@ -86,6 +86,7 @@ bCancer_list = recuplistfich("bCancer_apprentissage.txt")
 mushroom_list = recuplistfich("mushroom_apprentissage.txt")
 spambase_list = recuplistfich("spambase_apprentissage.txt")
 
+
 # Autres initialisations
 mu_tab = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
 T = 7
