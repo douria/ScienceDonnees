@@ -35,5 +35,8 @@ random_sep("iris_resultat1.txt","iris_apprentissage", "iris_test")
 random_sep("mushroom_resultat1.txt","mushroom_apprentissage", "mushroom_test")
 random_sep("spambase_resultat1.txt","spambase_apprentissage", "spambase_test")
 random_sep("bCancer_resultat1.txt","bCancer_apprentissage", "bCancer_test")
-
+random_sep("iris_resultatN.txt","iris_apprentissageN", "iris_testN")
+random_sep("mushroom_resultatN.txt","mushroom_apprentissageN", "mushroom_testN")
+random_sep("spambase_resultatN.txt","spambase_apprentissageN", "spambase_testN")
+random_sep("bCancer_resultatN.txt","bCancer_apprentissageN", "bCancer_testN")
     
