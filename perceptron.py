@@ -81,27 +81,34 @@ def perfPerceptron(resultat_perceptron,mylistTest, N):
 
 # Partie Apprentissage
 #  récupérer les éléments
+print("IRIS")
 iris_list = recuplistfich("iris_apprentissage.txt")
+print("BCANCER")
 bCancer_list = recuplistfich("bCancer_apprentissage.txt")
+print("MUSHROOM")
 mushroom_list = recuplistfich("mushroom_apprentissage.txt")
+print("SPAMBASE")
 spambase_list = recuplistfich("spambase_apprentissage.txt")
 
 
 # Autres initialisations
 mu_tab = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
-T = 7
+Tiris = 20*len(iris_list)
+TbCancer = 20*len(bCancer_list)
+Tmushroom = 20*len(mushroom_list)
+Tspambase = 20*len(spambase_list)
 
-print("Iris Apprentissage:\n")
-resultat_perceptron_Iris = executePerceptron(iris_list, T, mu_tab)
+print("\n Iris Apprentissage:\n")
+resultat_perceptron_Iris = executePerceptron(iris_list, Tiris, mu_tab)
 print(resultat_perceptron_Iris)
-print("BCancer Apprentissage:\n")
-resultat_perceptron_BCancer = executePerceptron(bCancer_list, T, mu_tab)
+print("\n BCancer Apprentissage:\n")
+resultat_perceptron_BCancer = executePerceptron(bCancer_list, TbCancer, mu_tab)
 print(resultat_perceptron_BCancer)
-print("Mushroom Apprentissage:\n")
-resultat_perceptron_Mushroom = executePerceptron(mushroom_list, T, mu_tab)
+print("\n Mushroom Apprentissage:\n")
+resultat_perceptron_Mushroom = executePerceptron(mushroom_list, Tmushroom, mu_tab)
 print(resultat_perceptron_Mushroom)
-print("Spambase Apprentissage:\n")
-resultat_perceptron_Spambase = executePerceptron(spambase_list, T, mu_tab)
+print("\n Spambase Apprentissage:\n")
+resultat_perceptron_Spambase = executePerceptron(spambase_list, Tspambase, mu_tab)
 print(resultat_perceptron_Spambase)
 
 # Partie test
