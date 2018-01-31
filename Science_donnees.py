@@ -47,7 +47,7 @@ def RBCancer():
         for j in range (len(listeDBC)-1):
            if(j>1):
                 fichRes.write(" "+str(listeDBC[j]))
-        if(i!=len(listeDBC)-1):
+        if(i!=len(listdonnees)-1):
              fichRes.write("\n")
         listeDBC=listdonnees[0].split(",")
 
@@ -96,7 +96,7 @@ def spambase():
            if(j>1):
                fichRes.write(" "+str(listeM[j]))  
 
-        if(i!=len(listeM)-1):
+        if(i!=len(listdonnees)-1):
              fichRes.write("\n")
         listeM=listdonnees[i].split(",")
 
@@ -129,11 +129,12 @@ def mushroom():
          fich_donnees=fichier.read()
     listdonnees = fich_donnees.split("\n")
     
-   
+    print ("taille du fichier mushroom est :")
+    print(len(listdonnees))
     fichRes = open("mushroom_resultat1.txt", 'w')    
     listeM=listdonnees[0].split(",")
 
-    for i in range(len(listeM)-1):
+    for i in range(len(listdonnees)-1):
         if(listeM[0]=='p'):
             fichRes.write("+1") 
         else :
@@ -141,7 +142,7 @@ def mushroom():
         for j in range (len(listeM)-1):
            if(j>1):
                fichRes.write(" "+str(ord(listeM[j])-96)) 
-        if(i!=len(listeM)-1):
+        if(i!=len(listdonnees)-1):
             fichRes.write("\n")
         listeM=listdonnees[i].split(",")
 
